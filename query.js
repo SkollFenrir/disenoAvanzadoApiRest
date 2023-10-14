@@ -31,7 +31,7 @@ const getJoyas = async ({ limits = 10, order_by = 'id_ASC', page = 1 }) => {
 		limits,
 		offset
 	);
-    console.log(queryFormat)
+    //console.log(queryFormat)
 	const { rows: joyas } = await pool.query(queryFormat);
 	return joyas;
 };
@@ -71,7 +71,7 @@ const getFilter = async ({ precio_max, precio_min, categoria, metal }) => {
 		filter = filter.join(' AND ');
 		query += ` WHERE ${filter}`;
 	}
-    console.log(values, query)
+    //console.log(values, query)
 	const { rows: joyas } = await pool.query(query, values);
 	return joyas;
 };
