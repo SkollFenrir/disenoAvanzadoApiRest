@@ -56,10 +56,10 @@ const HATEOAS = (joyas) => {
 const getFilter = async ({ precio_max, precio_min, categoria, metal }) => {
 	let filter = [];
 	let values = [];
-	const addFilter = (campo, comprador, valor) => {
+	const addFilter = (campo, comparador, valor) => {
 		values.push(valor);
 		const { length } = filter;
-		filter.push(`${campo} ${comprador} $${length + 1}`);
+		filter.push(`${campo} ${comparador} $${length + 1}`);
 	};
 	if (precio_max) addFilter('precio', '<=', precio_max);
 	if (precio_min) addFilter('precio', '>=', precio_min);
