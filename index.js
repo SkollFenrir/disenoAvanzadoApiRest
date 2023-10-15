@@ -9,7 +9,7 @@ app.listen(PORT, () => {
 app.use(express.json());
 
 const reportQuery = async (req, res, next) => {
-	const params = req.params;
+	const params = req.query;
 	const url = req.url;
 	console.log(
 		`
@@ -36,7 +36,7 @@ Con los parametros:  `,
 
 app.get('/joyas', reportQuery, async (req, res) => {
 	try {
-		const query = req.params;
+		const query = req.query;
 		const joyas = await getJoyas(query);
 		const hateoas = HATEOAS(joyas);
 		res.json(hateoas);
@@ -47,7 +47,7 @@ app.get('/joyas', reportQuery, async (req, res) => {
 
 app.get('/joyas/filtros', reportQuery, async (req, res) => {
 	try {
-		const query = req.params;
+		const query = req.query;
 		const joyas = await getFilter(query);
 		res.json(joyas);
 	} catch (error) {
